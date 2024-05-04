@@ -64,11 +64,13 @@ const images = [
   },
 ];
 
-const imgBox = document.querySelectorAll(".gallery");
+const imgBox = document.querySelector(".gallery");
 
-imgBox.inser("beforeend") = images
-  .map(
-    (images) => `<li class="gallery-item">
+imgBox.insertAdjacentHTML(
+  "beforeend",
+  images
+    .map(
+      (images) => `<li class="gallery-item">
       <a class="gallery-link" href="${images.original}">
         <img
           class="gallery-image"
@@ -78,6 +80,18 @@ imgBox.inser("beforeend") = images
         />
       </a>
     </li>`
-  )
-  .join("");
-imgBox.inser
+    )
+    .join("")
+);
+addEventListener("click", (event) => {
+  event.preventDefault();
+  console.log();
+  if (event.target.tagName.toLowerCase() === "img") {
+    const instance = basicLightbox.create(`
+    <img src="${event.target.dataset.source}" width="800" height="600">
+`);
+
+    instance.show();
+  }
+  instance.close();
+});
