@@ -85,7 +85,7 @@ imgBox.insertAdjacentHTML(
 );
 addEventListener("click", (event) => {
   event.preventDefault();
-  console.log();
+
   if (event.target.tagName.toLowerCase() === "img") {
     const instance = basicLightbox.create(`
     <img src="${event.target.dataset.source}" width="800" height="600">
